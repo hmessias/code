@@ -6,7 +6,7 @@ Attributes:
 """
 
 CONSONANT_CLUSTERS = ['sh', 'gl', 'ch', 'ph', 'tr', 'br', 'fr', 'bl', 'gr',
-                      'st', 'sl', 'cl', 'pl', 'fl']
+                      'st', 'sl', 'cl', 'pl', 'fl', 'th']
 
 
 def translate(phrase):
