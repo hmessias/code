@@ -9,4 +9,3 @@ print(pwd_file_line)
 for line in pwd_file_line:
     user=[]
     user = 
-    .
