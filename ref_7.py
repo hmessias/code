@@ -1,6 +1,4 @@
-import pprint
-
-NEWS_PASSAGE = """ Bell Canada is alerting customers after hackers illegally
+newsPassage = """ Bell Canada is alerting customers after hackers illegally
 accessed the information of fewer than 100,000 customers, the telecom giant
 told CBC News.
 
@@ -61,75 +59,38 @@ alert for those types of things now."
 A person or group claiming to be behind the attack against Bell in May warned
 in an online post that more data would be leaked if Bell did not co-operate."""
 
-
-def remove_punctuation(passage):
-    """
-    This function returns a string with all punctuation converted to spaces
-
-    Args:
-        passage: the source string
-
-    Returns:
-        string with no punctuation only spaces
-
-    Note:
-        There is a better method for this that uses regular expressions
-    """
+def removePunctuation(passage): # Function that removes punctuation
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
+    # Remove punctation from passage
     for i in punctuation:
-        passage = passage.replace(i, " ")
+        passage = passage.replace(i, "")
 
     return passage
 
+def createWordList(passage): # Function that converts the sentence into a list
 
-def gen_word_freq_dict(passage):
-    # split passage into list of words
-    # sort word list
-    # create an empty dictionary
+    passage = passage.replace("\n", " ") # Remove end of line characters
+    passage = passage.lower() # Change everything to lowercase
+    passage = passage.strip() # Strip all extra whitespace from beginning and end"
+    passage = passage.split(" ") # Split passage into a list
 
-    # loop over each word in the list of raw words
-        # convert the word to lower case
-        # if word is already in the words dictionary
-            # increase the count for that word
-            # i.e. increment the dictionary value for that word
+    return passage
 
-        # else if the word is:
-        # * made of alphabetical characters and
-        # * is longer than a single character or is an "i", or "a"
-            # add the word to the dictionary and set its counter to 1
+def createUniqueWordList(wordList): # Function that generates unique word list
 
-    # return the word:count dictionary
+    uniqueWords = [] # Create an empty list that we can add to
+    for word in wordList: # Parse through our list of words
+        if word.isalpha() == True: # Checks if the word is alphabetic and not a number
+            if word not in uniqueWords: # If the word isn't already in our list of unique words
+                uniqueWords.append(word) # Add unique word to our list, and then move onto the next word
 
+    return uniqueWords
 
-def get_key_value(key_value_pair):
-    """
-    This function returns the value portion of a single dictionary item
+newsPassage = removePunctuation(newsPassage) # Remove punctuation using function
+wordList = createWordList(newsPassage) # Create list using function
+uniqueWords = createUniqueWordList(wordList)
 
-    This is a more explicit method than using a lambda when implementing common
-    sorting idioms.
-
-    Args:
-        key_value_pair: this tuple contains the current key <-> value mapping of the dictionary
-
-    Returns:
-        The value stored in the current mapping, i.e. the tuple element in position 1 []
-    """
-    return key_value_pair[1]
-
-# remove the punctuation from the passage
-clean_passage = remove_punctuation(NEWS_PASSAGE)
-
-# create a dictionary that stores word frequencies
-word_freq_dict = gen_word_freq_dict(clean_passage)
-
-#prompt the user for a word and convert it to lower case
-
-#output how many times that lowercase word appeared in the passage
-
-## Bonus
-# create a sorted list from the dictionary using the get_key_value function
-# above and the `sorted()` global function
-# see https://docs.python.org/3/library/functions.html#sorted and 
-# https://docs.python.org/3/howto/sorting.html#sortinghowto
-# print the five most frequently used words and how often they were used
+print("Number of words in original passage: " + str(len(wordList)))
+print("Number of unique words: " + str(len(uniqueWords)))
+print(uniqueWords)

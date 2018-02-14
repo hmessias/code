@@ -1,6 +1,6 @@
 import pprint
 
-NEWS_PASSAGE1 = """ Bell Canada is alerting customers after hackers illegally
+newsPassage1 = """ Bell Canada is alerting customers after hackers illegally
 accessed the information of fewer than 100,000 customers, the telecom giant
 told CBC News.
 
@@ -61,7 +61,7 @@ alert for those types of things now."
 A person or group claiming to be behind the attack against Bell in May warned
 in an online post that more data would be leaked if Bell did not co-operate."""
 
-NEWS_PASSAGE2 = """ Coastal communities in British Columbia and Alaska were
+newsPassage2 = """ Coastal communities in British Columbia and Alaska were
 evacuated to higher ground early this morning after tsunami warning sirens
 blared following a large earthquake off the coast of Alaska. But the warning
 was later cancelled without any reported tsunami damage. Why?
@@ -109,7 +109,7 @@ In the case of the 2004 and 2011 earthquakes, there was more vertical motion,
 which had devastating consequences. Roughly 225,000 were killed in the 2004
 earthquake; 20,000 people were killed in Japan in 2011.
 
-Motion of the plates 
+Motion of the plates
 
 The West Coast is an area with quite a few fault lines
 that can result in various motions, Wagstaffe explains.
@@ -142,26 +142,62 @@ better understand the risks along the West Coast.
 
 """
 
-def remove_punctuation(passage):
+def removePunctuation(passage): # Function that removes punctuation
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
     # Remove punctation from passage
     for i in punctuation:
-        passage = passage.replace(i, " ")
+        passage = passage.replace(i, "")
 
     return passage
 
-# generate word list function from the list activity
-# remove all of the punctuation from each passage 
+def createWordList(passage): # Function that converts the sentence into a list
 
-# split each passage into a list of words
+    passage = passage.replace("\n", " ") # Remove end of line characters
+    passage = passage.lower() # Change everything to lowercase
+    passage = passage.strip() # Strip all extra whitespace from beginning and end"
+    passage = passage.split(" ") # Split passage into a list
 
-# create list of unique words based on the raw word list for passage 1
-# create a set for passage 1 from the list of unique words
+    return passage
 
-# create list of unique words based on the raw word list for passage 2
-# create a set for passage 2 from the list of unique words
+def createUniqueWordList(wordList): # Function that generates unique word list
 
-# create a set of words that are in both passage 1 and passage 2
+    uniqueWords = [] # Create an empty list that we can add to
+    for word in wordList: # Parse through our list of words
+        if word.isalpha() == True: # Checks if the word is alphabetic and not a number
+            if word not in uniqueWords: # If the word isn't already in our list of unique words
+                uniqueWords.append(word) # Add unique word to our list, and then move onto the next word
 
-# Use pprint.pprint to print a list of words that is in both passage 1 and passage 2
+    return uniqueWords
+
+# A function that calls all the other functions, just to save writing extra code
+def createUniqueWordsFromPassage(passage):
+
+    passage = removePunctuation(passage)
+    passage = createWordList(passage)
+    passage = createUniqueWordList(passage)
+
+    return passage
+
+uniqueWords1 = createUniqueWordsFromPassage(newsPassage1)
+uniqueWords2 = createUniqueWordsFromPassage(newsPassage2)
+
+#Empty list for when we compare both passages
+uniqueWordList = []
+
+#Compares all the words from the first passage to the second passage
+for word in uniqueWords1:
+    if word not in uniqueWords2:
+        uniqueWordList.append(word)
+
+#Compares all the words from the second passage to the first passage
+for word in uniqueWords2:
+    if word not in uniqueWords1:
+        uniqueWordList.append(word)
+
+print("Total unique words between two passages: " + str(len(uniqueWordList)))
+print("Unique words in first passage: " + str(len(uniqueWords1)))
+print("Unique Words in Second Passage: " + str(len(uniqueWords2)))
+
+print("Unique Word List: ")
+print(uniqueWordList)

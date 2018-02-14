@@ -1,6 +1,6 @@
 import pprint
 
-NEWS_PASSAGE = """ Bell Canada is alerting customers after hackers illegally
+newsPassage = """ Bell Canada is alerting customers after hackers illegally
 accessed the information of fewer than 100,000 customers, the telecom giant
 told CBC News.
 
@@ -62,19 +62,8 @@ A person or group claiming to be behind the attack against Bell in May warned
 in an online post that more data would be leaked if Bell did not co-operate."""
 
 
-def remove_punctuation(passage):
-    """
-    This function returns a string with all punctuation converted to spaces
+def removePunctuation(passage):
 
-    Args:
-        passage: the source string
-
-    Returns:
-        string with no punctuation only spaces
-
-    Note:
-        There is a better method for this that uses regular expressions
-    """
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
     for i in punctuation:
@@ -82,54 +71,52 @@ def remove_punctuation(passage):
 
     return passage
 
+# Function that converts the sentence into a list
+def createWordList(passage):
 
-def gen_word_freq_dict(passage):
-    # split passage into list of words
-    # sort word list
-    # create an empty dictionary
+    passage = passage.replace("\n", " ") # Remove end of line characters
+    passage = passage.lower() # Change everything to lowercase
+    passage = passage.strip() # Strip all extra whitespace from beginning and end"
+    passage = passage.split(" ") # Split passage into a list
 
-    # loop over each word in the list of raw words
-        # convert the word to lower case
-        # if word is already in the words dictionary
-            # increase the count for that word
-            # i.e. increment the dictionary value for that word
+    return passage
 
-        # else if the word is:
-        # * made of alphabetical characters and
-        # * is longer than a single character or is an "i", or "a"
-            # add the word to the dictionary and set its counter to 1
+#Function that creates a dict of word:count entries
+def createWordFreqDict(passage):
 
-    # return the word:count dictionary
+    newDict = {} #create empty dict
+    newKeys = [] #create empty list of keys
 
+    #Creates a list of the unique words, these are used as keys later
+    for word in passage:
+        if word.isalpha() == True:
+            if word not in newKeys:
+                newKeys.append(word)
 
-def get_key_value(key_value_pair):
-    """
-    This function returns the value portion of a single dictionary item
+    #Creates a dict from list of keys and set all values at 0
+    newDict = dict.fromkeys(newKeys, 0)
 
-    This is a more explicit method than using a lambda when implementing common
-    sorting idioms.
+    #Counts how many times each word appears and updates that key
+    for word in passage:
+        if word.isalpha() == True:
+            newDict[word] = newDict[word] + 1
 
-    Args:
-        key_value_pair: this tuple contains the current key <-> value mapping of the dictionary
+    return newDict
 
-    Returns:
-        The value stored in the current mapping, i.e. the tuple element in position 1 []
-    """
-    return key_value_pair[1]
+newsPassage = removePunctuation(newsPassage) # Remove punctuation using function
+wordList = createWordList(newsPassage) # Create list using function
+wordFreq = createWordFreqDict(wordList) # Create dict using function
 
-# remove the punctuation from the passage
-clean_passage = remove_punctuation(NEWS_PASSAGE)
-
-# create a dictionary that stores word frequencies
-word_freq_dict = gen_word_freq_dict(clean_passage)
-
-#prompt the user for a word and convert it to lower case
-
-#output how many times that lowercase word appeared in the passage
+word = input("What word do you want to check? ").lower()
+print(word + " appears " + str(wordFreq[word]) + " times")
 
 ## Bonus
 # create a sorted list from the dictionary using the get_key_value function
 # above and the `sorted()` global function
-# see https://docs.python.org/3/library/functions.html#sorted and 
+# see https://docs.python.org/3/library/functions.html#sorted and
 # https://docs.python.org/3/howto/sorting.html#sortinghowto
 # print the five most frequently used words and how often they were used
+words = sorted(wordFreq, key=wordFreq.get, reverse=True)
+print("Top 5 words: ")
+for i in range(0, 5):
+    print(words[i])

@@ -1,164 +1,101 @@
-{
- "cells": [
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "# List Activity: Identifying Unique Words\n",
-    "\n",
-    "\n",
-    "In this activity you will complete the Code. It takes the `NEWS_PASSAGE` string does the following:\n",
-    "\n",
-    "* Create a new news string that has all the punctuation characters removed. The function `remove_punctutaion` is provided to perform this task.\n",
-    "\n",
-    "* Split the modified passage into a list of words with space acting as the delimeter\n",
-    "\n",
-    "* Generate a new list that contains only unique words (i.e. no repeatitions) and doesn't contain any non-alphabetic and non-words from the list.\n",
-    "\n",
-    "Note that all text is to be converted to lower case\n",
-    "\n",
-    "Using this unique word list output:\n",
-    "\n",
-    "* the number of unique words, versus the number of \"raw\" words.\n",
-    "* all of the unique words in the passage\n"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "NEWS_PASSAGE = \"\"\" Bell Canada is alerting customers after hackers illegally\n",
-    "accessed the information of fewer than 100,000 customers, the telecom giant\n",
-    "told CBC News.\n",
-    "\n",
-    "The breach comes just eight months after 1.9 million customer emails were\n",
-    "stolen from Bell's database by an anonymous hacker.\n",
-    "\n",
-    "Bell is Canada's largest telecom company, with over 22 million customers.\n",
-    "\n",
-    "The information obtained in the latest breach included details such as names,\n",
-    "email addresses, account user names and numbers, as well as phone numbers.\n",
-    "\n",
-    "Bell said there was no indication that credit card, banking or other\n",
-    "information was accessed.\n",
-    "\n",
-    "But, it would not say when the breach took place or whether it was related to\n",
-    "a past incident.\n",
-    "\n",
-    "\"We apologize to our customers and are contacting all those affected,\" said\n",
-    "Bell spokesperson Marc Choma in an email.\n",
-    "\n",
-    "Bell added that it had notified appropriate government agencies including the\n",
-    "Office of the Privacy Commissioner of Canada.\n",
-    "\n",
-    "\"Bell works closely with law enforcement, government and the broader\n",
-    "technology industry to combat the growth of cybercrimes, and we have\n",
-    "successfully supported law enforcement in past prosecutions of hackers,\"\n",
-    "Choma said.\n",
-    "\n",
-    "Ongoing investigation Tobi Cohen, a spokesperson for the Office of the\n",
-    "Privacy Commissioner, confirmed in an email that Bell had notified it of the\n",
-    "breach and that it is following up with the company to get more information\n",
-    "and \"determine follow up actions.\"\n",
-    "\n",
-    "The RCMP is also investigating.\n",
-    "\n",
-    "Chester Wisniewski, an expert at the data security firm Sophos Canada, said\n",
-    "the breach did make customers more likely to be victimized by potential\n",
-    "phishing attacks; as seen in other big breaches like those at LinkedIn and\n",
-    "Ashley Madison.\n",
-    "\n",
-    "AshleyMadison security protocols violated privacy laws, watchdog says \"When\n",
-    "you see email addresses leaked, that's a really goodthing for spammers and\n",
-    "phishing attacks through email, because they know that if you're in Bell's\n",
-    "database, you likely to have some sort of commercial relationship with Bell,\"\n",
-    "he said.\n",
-    "\n",
-    "\"So, they can send you one of those fake emails saying, 'Hey your cell phone\n",
-    "bill is due, click here to login.'\"\n",
-    "\n",
-    "Wisniewski added that Bell was under no legal obligation to notify customers\n",
-    "of the breach, because stolen email addresses are not considered personally\n",
-    "identifiable such as a driver's licence or social insurance number.\n",
-    "\n",
-    "\"A lot of times when companies lose this kind of information, they don't even\n",
-    "tell you,\" he said. \"The good thing about them telling us is to put us on\n",
-    "alert for those types of things now.\"\n",
-    "\n",
-    "A person or group claiming to be behind the attack against Bell in May warned\n",
-    "in an online post that more data would be leaked if Bell did not co-operate.\"\"\"\n",
-    "\n",
-    "def remove_punctuation(passage):\n",
-    "    punctuation = \".\", \"'\", '\"', \";\", \":\", \",\", \"?\"\n",
-    "\n",
-    "    # Remove punctation from passage\n",
-    "    for i in punctuation:\n",
-    "        passage = passage.replace(i, \" \")\n",
-    "\n",
-    "    return passage\n",
-    "\n",
-    "\n",
-    "# Create a function to generate a list of unique words based on \n",
-    "# a raw word list parameter\n",
-    "\n",
-    "    # Create a copy of the raw word list\n",
-    "\n",
-    "    # Sort word list copy\n",
-    "\n",
-    "    # Create empty word list to hold unique words\n",
-    "\n",
-    "    # loop over all of the words in the raw input list copy\n",
-    "        # Convert each word to lower case\n",
-    "        # Append each word to the unique list if\n",
-    "        #   * it isn't already in the list\n",
-    "        #   * it is made up of alphabetic characters\n",
-    "        #   * the only one letter words are 'i' and 'a'\n",
-    "\n",
-    "    # sort the unique word list\n",
-    "    # return the sorted unique word list\n",
-    "\n",
-    "#Main logic of your code\n",
-    "# Remove all punctuation from the passage\n",
-    "news_item = remove_punctuation(NEWS_PASSAGE)\n",
-    "\n",
-    "# split the news item string into a list of words (or at least thing between spaces)\n",
-    "\n",
-    "# generate a list of unique words based on raw word list using your function above\n",
-    "\n",
-    "# print number of unique words and number of total words\n",
-    "\n",
-    "# print the list of unique words\n"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.6.4"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+NEWS_PASSAGE = """ Bell Canada is alerting customers after hackers illegally
+accessed the information of fewer than 100,000 customers, the telecom giant
+told CBC News.
+
+The breach comes just eight months after 1.9 million customer emails were
+stolen from Bell's database by an anonymous hacker.
+
+Bell is Canada's largest telecom company, with over 22 million customers.
+
+The information obtained in the latest breach included details such as names,
+email addresses, account user names and numbers, as well as phone numbers.
+
+Bell said there was no indication that credit card, banking or other
+information was accessed.
+
+But, it would not say when the breach took place or whether it was related to
+a past incident.
+
+"We apologize to our customers and are contacting all those affected," said
+Bell spokesperson Marc Choma in an email.
+
+Bell added that it had notified appropriate government agencies including the
+Office of the Privacy Commissioner of Canada.
+
+"Bell works closely with law enforcement, government and the broader
+technology industry to combat the growth of cybercrimes, and we have
+successfully supported law enforcement in past prosecutions of hackers,"
+Choma said.
+
+Ongoing investigation Tobi Cohen, a spokesperson for the Office of the
+Privacy Commissioner, confirmed in an email that Bell had notified it of the
+breach and that it is following up with the company to get more information
+and "determine follow up actions."
+
+The RCMP is also investigating.
+
+Chester Wisniewski, an expert at the data security firm Sophos Canada, said
+the breach did make customers more likely to be victimized by potential
+phishing attacks; as seen in other big breaches like those at LinkedIn and
+Ashley Madison.
+
+AshleyMadison security protocols violated privacy laws, watchdog says "When
+you see email addresses leaked, that's a really goodthing for spammers and
+phishing attacks through email, because they know that if you're in Bell's
+database, you likely to have some sort of commercial relationship with Bell,"
+he said.
+
+"So, they can send you one of those fake emails saying, 'Hey your cell phone
+bill is due, click here to login.'"
+
+Wisniewski added that Bell was under no legal obligation to notify customers
+of the breach, because stolen email addresses are not considered personally
+identifiable such as a driver's licence or social insurance number.
+
+"A lot of times when companies lose this kind of information, they don't even
+tell you," he said. "The good thing about them telling us is to put us on
+alert for those types of things now."
+
+A person or group claiming to be behind the attack against Bell in May warned
+in an online post that more data would be leaked if Bell did not co-operate."""
+
+def remove_punctuation(passage):
+    punctuation = ".", "'", '"', ";", ":", ",", "?"
+
+    # Remove punctation from passage
+    for i in punctuation:
+        passage = passage.replace(i, " ")
+
+    return passage
+
+
+# Create a function to generate a list of unique words based on 
+# a raw word list parameter
+
+    # Create a copy of the raw word list
+
+    # Sort word list copy
+
+    # Create empty word list to hold unique words
+
+    # loop over all of the words in the raw input list copy
+        # Convert each word to lower case
+        # Append each word to the unique list if
+        #   * it isn't already in the list
+        #   * it is made up of alphabetic characters
+        #   * the only one letter words are 'i' and 'a'
+
+    # sort the unique word list
+    # return the sorted unique word list
+
+#Main logic of your code
+# Remove all punctuation from the passage
+news_item = remove_punctuation(NEWS_PASSAGE)
+
+# split the news item string into a list of words (or at least thing between spaces)
+
+# generate a list of unique words based on raw word list using your function above
+
+# print number of unique words and number of total words
+
+# print the list of unique words
