@@ -67,7 +67,7 @@ def removePunctuation(passage):
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
     for i in punctuation:
-        passage = passage.replace(i, " ")
+        passage = passage.replace(i, "")
 
     return passage
 
