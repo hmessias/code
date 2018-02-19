@@ -64,6 +64,8 @@ def removePunctuation(passage): # Function that removes punctuation
 
     # Remove punctation from passage
     for i in punctuation:
+        passage = passage.replace(i, "")
+
     return passage
 
 def createWordList(passage): # Function that converts the sentence into a list
