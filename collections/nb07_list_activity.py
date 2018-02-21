@@ -69,6 +69,7 @@ def remove_punctuation(passage):
     return passage
 
 
+
 # Create a function to generate a list of unique words based on 
 # a raw word list parameter
 
@@ -90,7 +91,7 @@ def remove_punctuation(passage):
 
 #Main logic of your code
 # Remove all punctuation from the passage
-news_item = remove_punctuation(NEWS_PASSAGE)
+news_passage = remove_punctuation(NEWS_PASSAGE)
 
 # split the news item string into a list of words (or at least thing between spaces)
 
