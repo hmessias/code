@@ -127,7 +127,6 @@ def gen_word_freq_dict(passage):
     Returns:
         The value stored in the current mapping, i.e. the tuple element in position 1 []
     """
-    return key_value_pair[1]
 
 # remove the punctuation from the passage
 clean_passage = remove_punctuation(NEWS_PASSAGE) #This will get the text with no punctuation
@@ -137,7 +136,8 @@ list_words = create_list_words(clean_passage) #this will get a list of words in 
 word_freq_dict = gen_word_freq_dict(list_words)
 
 #prompt the user for a word and convert it to lower case
-
+word = input("please, type the word to checked how many times appears in the text: ").lower()
+print(" the word " + word + " appers " + str(word_freq_dict[word]) + " times.")
 #output how many times that lowercase word appeared in the passage
 
 ## Bonus
