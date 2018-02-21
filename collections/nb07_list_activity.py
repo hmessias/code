@@ -59,16 +59,15 @@ alert for those types of things now."
 A person or group claiming to be behind the attack against Bell in May warned
 in an online post that more data would be leaked if Bell did not co-operate."""
 
-def remove_punctuation(passage):
+def remove_punctuation(passage): #this funcion removes the punctuation
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
-    # Remove punctation from passage
     for i in punctuation:
         passage = passage.replace(i, " ")
 
     return passage
 
-def create_list_word(passage):
+def create_list_word(passage): #this function removes the end of lines, lower case the words, strip and split it into a list
     passage = passage.replace("\n", " ") #this will replace the end of a line by an empty space
     passage = passage.lower() #this will set all words with lower case letters
     passage = passage.strip() #this will remove all empty spaces from begining and end
@@ -76,7 +75,8 @@ def create_list_word(passage):
 
     return passage
 
-
+def create_unique_words(passage):
+    
 
 # Create a function to generate a list of unique words based on 
 # a raw word list parameter
