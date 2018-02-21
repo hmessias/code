@@ -62,19 +62,8 @@ A person or group claiming to be behind the attack against Bell in May warned
 in an online post that more data would be leaked if Bell did not co-operate."""
 
 
-def remove_punctuation(passage):
-    """
-    This function returns a string with all punctuation converted to spaces
-
-    Args:
-        passage: the source string
-
-    Returns:
-        string with no punctuation only spaces
-
-    Note:
-        There is a better method for this that uses regular expressions
-    """
+def remove_punctuation(passage): #this functuon will remove all the punctuation listed bellow
+    
     punctuation = ".", "'", '"', ";", ":", ",", "?"
 
     for i in punctuation:
@@ -83,9 +72,18 @@ def remove_punctuation(passage):
     return passage
 
 
-def gen_word_freq_dict(passage):
+def create_list_words(passage):
+
+    passage = passage.replace("\n", " ")
+    passage = passage.lower()
+    passage = passage.strip()
+    passage = passage.split(" ")
+
+    return passage
+
     # split passage into list of words
     # sort word list
+def gen_word_freq_dict(passage):
     # create an empty dictionary
 
     # loop over each word in the list of raw words
@@ -102,7 +100,7 @@ def gen_word_freq_dict(passage):
     # return the word:count dictionary
 
 
-def get_key_value(key_value_pair):
+#def get_key_value(key_value_pair):
     """
     This function returns the value portion of a single dictionary item
 
@@ -118,7 +116,8 @@ def get_key_value(key_value_pair):
     return key_value_pair[1]
 
 # remove the punctuation from the passage
-clean_passage = remove_punctuation(NEWS_PASSAGE)
+clean_passage = remove_punctuation(NEWS_PASSAGE) #This will get the text with no punctuation
+list_words = create_list_words(clean_passage)
 
 # create a dictionary that stores word frequencies
 word_freq_dict = gen_word_freq_dict(clean_passage)
