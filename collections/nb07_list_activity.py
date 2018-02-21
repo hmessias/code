@@ -68,6 +68,14 @@ def remove_punctuation(passage):
 
     return passage
 
+def create_list_word(passage):
+    passage = passage.replace("\n", " ") #this will replace the end of a line by an empty space
+    passage = passage.lower() #this will set all words with lower case letters
+    passage = passage.strip() #this will remove all empty spaces from begining and end
+    passage = passage.split(" ") #this will make a list
+
+    return passage
+
 
 
 # Create a function to generate a list of unique words based on 
@@ -94,6 +102,8 @@ def remove_punctuation(passage):
 news_passage = remove_punctuation(NEWS_PASSAGE)
 
 # split the news item string into a list of words (or at least thing between spaces)
+
+news_passage_list = create_list_word(news_passage)
 
 # generate a list of unique words based on raw word list using your function above
 
