@@ -72,7 +72,7 @@ def remove_punctuation(passage): #this functuon will remove all the punctuation 
     return passage
 
 
-def create_list_words(passage):
+def create_list_words(passage): #this function will get a list of words from the text, with no punctuation and lowered case letters
 
     passage = passage.replace("\n", " ")
     passage = passage.lower()
@@ -84,8 +84,19 @@ def create_list_words(passage):
     # split passage into list of words
     # sort word list
 def gen_word_freq_dict(passage):
-    # create an empty dictionary
 
+    # create an empty dictionary
+    dict_word = {} #this creates an empty dictionary
+    word_keys = [] #this creates an empty list, that will holds the number of apperance of a word
+
+    for word in passage: #this will check all the words in the list of words
+        if word.isalpha(): #this will check if is a word or a number
+            if word not in word_keys: #this will loop over the list to find for unique words
+                word_keys.append(word) #this will add only unique words to the list called word_keys
+
+    dict_word = dict.fromkeys(word_keys, 0) #this will create a dictionary that will uses the list of words and the key and assigns a value of 0 to all entries
+
+    
     # loop over each word in the list of raw words
         # convert the word to lower case
         # if word is already in the words dictionary
@@ -96,9 +107,12 @@ def gen_word_freq_dict(passage):
         # * made of alphabetical characters and
         # * is longer than a single character or is an "i", or "a"
             # add the word to the dictionary and set its counter to 1
+    for word in passage: #this will look over the text
+        if word.isalpha(): #this checks if its a word made of alphabetical characters
+            dict_word[word] = dict_word[word] + 1 #this will check the word and if appers again will add 1 into its key value in the dictionary
 
     # return the word:count dictionary
-
+    return dict_word
 
 #def get_key_value(key_value_pair):
     """
@@ -117,10 +131,10 @@ def gen_word_freq_dict(passage):
 
 # remove the punctuation from the passage
 clean_passage = remove_punctuation(NEWS_PASSAGE) #This will get the text with no punctuation
-list_words = create_list_words(clean_passage)
+list_words = create_list_words(clean_passage) #this will get a list of words in the text
 
 # create a dictionary that stores word frequencies
-word_freq_dict = gen_word_freq_dict(clean_passage)
+word_freq_dict = gen_word_freq_dict(list_words)
 
 #prompt the user for a word and convert it to lower case
 
