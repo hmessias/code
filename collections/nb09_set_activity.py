@@ -152,10 +152,23 @@ def remove_punctuation(passage):
     return passage
 
 # generate word list function from the list activity
-# remove all of the punctuation from each passage 
+
+def create_list_word(passage):
+    passage = passage.replace("\n", "")
+    passage = passage.lower()
+    passage = passage.strip()
+    passage = passage.split(" ")
+
+    return passage
+
+# remove all of the punctuation from each passage
+news_passage_1 = remove_punctuation(NEWS_PASSAGE1)
+news_passage_2 = remove_punctuation(NEWS_PASSAGE2)
 
 # split each passage into a list of words
 
+list_passage_1 = create_list_word(news_passage_1)
+list_passage_2 = create_list_word(news_passage_2)
 # create list of unique words based on the raw word list for passage 1
 # create a set for passage 1 from the list of unique words
 
