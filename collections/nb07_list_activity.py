@@ -75,8 +75,15 @@ def create_list_word(passage): #this function removes the end of lines, lower ca
 
     return passage
 
-def create_unique_words(passage):
-    
+def create_unique_words(word_list): #this function will create a list of just unique words, only one entry for each word from the text
+    unique_words = [] #this creates an empty list, that will be appended with unique words over the loop
+    for word in word_list: #this loop will check the raw list of words
+        if word.isalpha(): #this will check to look just for words, not number, in the raw list
+            if word not in unique_words: #this will compare whether the word in the raw list is in the unique list already
+                unique_words.append(word) #If the word is not in the unique list, it will include (append) this word to the list
+
+    return unique_words
+
 
 # Create a function to generate a list of unique words based on 
 # a raw word list parameter
@@ -106,7 +113,9 @@ news_passage = remove_punctuation(NEWS_PASSAGE)
 news_passage_list = create_list_word(news_passage)
 
 # generate a list of unique words based on raw word list using your function above
-
+unique_word_list = create_unique_words(news_passage_list)
 # print number of unique words and number of total words
-
+print("The number of unique words are: " + str(len(unique_word_list)))
+print("the total number of words are: " + str(len(news_passage_list)))
 # print the list of unique words
+print(unique_word_list)
