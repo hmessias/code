@@ -161,6 +161,15 @@ def create_list_word(passage):
 
     return passage
 
+def create_unique_word_list(word_list):
+    unique_word_list = []
+    for word in word_list:
+        if word.isalpha():
+            if word not in unique_word_list:
+                unique_word_list.append(word)
+
+    return unique_word_list
+
 # remove all of the punctuation from each passage
 news_passage_1 = remove_punctuation(NEWS_PASSAGE1)
 news_passage_2 = remove_punctuation(NEWS_PASSAGE2)
@@ -170,9 +179,13 @@ news_passage_2 = remove_punctuation(NEWS_PASSAGE2)
 list_passage_1 = create_list_word(news_passage_1)
 list_passage_2 = create_list_word(news_passage_2)
 # create list of unique words based on the raw word list for passage 1
+
+unique_word_list_1 = create_unique_word_list(list_passage_1)
+
 # create a set for passage 1 from the list of unique words
 
 # create list of unique words based on the raw word list for passage 2
+unique_word_list_2 = create_unique_word_list(list_passage_2)
 # create a set for passage 2 from the list of unique words
 
 # create a set of words that are in both passage 1 and passage 2
