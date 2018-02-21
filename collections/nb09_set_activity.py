@@ -161,7 +161,7 @@ def create_list_word(passage):
 
     return passage
 
-def create_unique_word_list(word_list):
+def create_unique_word_list(word_list): #this function will create a list of unique words for each passage
     unique_word_list = []
     for word in word_list:
         if word.isalpha():
@@ -189,5 +189,17 @@ unique_word_list_2 = create_unique_word_list(list_passage_2)
 # create a set for passage 2 from the list of unique words
 
 # create a set of words that are in both passage 1 and passage 2
+unique_word_list = [] #this will compares the words in unique list 1 with unique list 2
+for word in unique_word_list_1:
+    if word not in unique_word_list_2:
+        unique_word_list.append(word) #this will create a list of words on both lists
 
+for word in unique_word_list_2: #this will compares the words in unique list 2 with unique list 1
+    if word not in unique_word_list_1:
+        unique_word_list.append(word) #this will create a list of common words
+
+        
 # Use pprint.pprint to print a list of words that is in both passage 1 and passage 2
+print("the number of unique words on passage 1 is " + str(len(unique_word_list_1)))
+print("the number of unique words on passage 2 is " + str(len(unique_word_list_2)))
+print("the number of words that apper on both passages is " + str(len(unique_word_list)))
