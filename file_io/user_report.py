@@ -18,7 +18,7 @@ def get_user_accounts(file_list):
 
 def parse_group(group_path='/etc/group'):
     group_data = []
-    with open(group_path) as group_file: #read the file /etc/passwd
+    with open(group_path) as group_file: #read the file /etc/group
         group_file_strings = group_file.readlines()
         for group_line in group_file_strings:
             group_line = group_line.rstrip()
@@ -26,14 +26,18 @@ def parse_group(group_path='/etc/group'):
     return group_data
 
 def get_sup_groups(username, group_data):
-    sup_groups = []
-    for group in group_data:
-        if username in group[3]:
-            sup_groups.append(group[0])
-    return sup_groups
+    
+    for user in username:
+        sup_groups = []
+        for group in group_data:
+            if user[0] in group[3]:
+                sup_groups.append(group[0])
+        user.append(sup_groups)
+    return username
+
 
 
 group_data = parse_group()
 user_accounts = get_user_accounts(pwd_file_line)
-htpadmin_sup_groups = get_sup_groups("htpadmin", group_data)
-
+users_sup_groups = get_sup_groups(user_accounts, group_data)
+print(users_sup_groups)
