@@ -4,10 +4,11 @@ def greater_than_3(num):
     else:
         return False
 
-numbers = [1, 2, 3,8, 9, 10]
+numbers = [1, 2, 3, 8, 9, 10]
 
 #Using a filter
 numbers_greater_3 = list(filter(greater_than_3, numbers))
+print(numbers_greater_3)
 
 #Not using a filter
 ng3 = []
