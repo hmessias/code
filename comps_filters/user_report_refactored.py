@@ -3,15 +3,13 @@
 
 import os
 
-pwd_file = open("/etc/passwd") #read the file /etc/passwd
 
-pwd_file_line = pwd_file.readlines() #read the file one line at a time
 
 def get_user(pwd_file_line): #gets the user we want from the /etc/passwf file
     
     pwd_file_line = pwd_file_line.rstrip() #removes all empty spaces
     passwd_fields = pwd_file_line.split(':') #splits into lines using the : as reference
-    if int(passwd_fields[2]) >= 1000 or int(passwd_fields[2]) == 0: #gets the user with user id of 0 and bigger than 1000
+    if int(passwd_fields[2]) >= 1000: #gets the user with user bigger than 1000
         return True
     else:
         return False
@@ -59,9 +57,14 @@ def gen_user_report(users_sup_groups, output_file='user_report_refactored.txt'):
 
 def main(): #this makes all these functions bellow run when the python file is invoked
    
+    pwd_file = open("/etc/passwd") #read the file /etc/passwd
+    pwd_file_line = pwd_file.readlines() #read the file one line at a time
     user_accounts = list(filter(get_user, pwd_file_line))
+    user_list = []
+    for line in user_accounts:
+        user_list.append(line.split(":"))
     group_data = parse_group()
-    users_sup_groups = get_sup_groups(user_accounts, group_data)
+    users_sup_groups = get_sup_groups(user_list, group_data)
     gen_user_report(users_sup_groups)
 
 if __name__ == '__main__': #this makes the python file, program, runs by itself, when called, invoked
