@@ -1,6 +1,11 @@
 #! /usr/bin/env python3
 
 import os
+"""This python program gets the users from the file /etc/passwd and the groups from the file
+/etc/groups and check on both the users created in the system and the group eack of them belong
+to and present this information in a txt file with the user name, UID, GUI, home directory, shell
+and suplimentary group.
+"""
 
 
 pwd_file = open("/etc/passwd") #read the file /etc/passwd
@@ -9,6 +14,15 @@ pwd_file_line = pwd_file.readlines() #read the file one line at a time
 
 
 def get_user_accounts(file_list): #gets the user we want from the /etc/passwf file
+    """
+    This function gest the information from the file /etc/passwd and gest a list of
+    the user, root and those one created after the OS being installed, ie. UID higher 
+    than or iqual 1000.
+
+    >>> get_user_accounts(passwd.py)
+    list
+    """
+
     user_accounts = [] #creates an empty user_accounts list to be filled with the info we want
     
     for passwd_line in file_list:
@@ -19,9 +33,17 @@ def get_user_accounts(file_list): #gets the user we want from the /etc/passwf fi
     return user_accounts
 
 def parse_group(group_path='/etc/group'): #gets the group info from the /etc/group file
+    """
+    This function gers the information from the file /etc/group and gest a list of the groups
+    created in the OS.
+
+    >>> parse_group(group.py)
+    list
+    """
+
     group_data = []
     with open(group_path) as group_file: #read the file /etc/group and assigns its value to group_file
-        group_file_strings = group_file.readlines() #reads the file on line at a time and assigns the value to group_file_string
+        group_file_strings = group_file.readlines() #reads the file one line at a time and assigns the value to group_file_string
         for group_line in group_file_strings: #loops the groups over the whole list of groups
             group_line = group_line.rstrip()
             group_data.append(group_line.split(':')) #creates a list of the groups
@@ -38,6 +60,11 @@ def get_sup_groups(username, group_data): #this will loop the users over the gro
     return username
 
 def gen_user_report(users_sup_groups, output_file='user_report.txt'):
+    """
+    This function generates the txt file with the desired information, by getting them from the list
+    users_sup_groups and creating a txt file called user_report.txt.
+
+    """
 
     file_dir = os.path.dirname(__file__)
     file_path = os.path.join(file_dir, 'user_report.txt') #uses the current directory
