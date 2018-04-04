@@ -22,13 +22,13 @@ def get_routers(IP_WWW): #this function issues the traceroute command against so
 
 
 
-def main():
-    sites = ['8.8.8.8', 'osnews.com', 'yahoo.com', 'facebook.com', 'google.com']
+def main(): #this function will provide the destinatios ips to get a list of router's ips
+    sites = ['8.8.8.8', 'osnews.com', 'yahoo.com', 'facebook.com', 'google.com'] #list of destinations
     for site in sites:
         get_routers(site)
 
     
-    unique_ips = []
+    unique_ips = [] #this part will create a list of unique ips from the global information
     for ip in ips:
         if ip not in unique_ips:
             unique_ips.append(ip)
