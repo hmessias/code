@@ -1,0 +1,1 @@
+[['root', 'x', '0', '0', 'root', '/root', '/bin/bash'], ['nfsnobody', 'x', '65534', '65534', 'Anonymous NFS User', '/var/lib/nfs', '/sbin/nologin'], ['nasp', 'x', '1000', '1000', 'nasp', '/home/nasp', '/bin/bash'], ['htpadmin', 'x', '1001', '1001', '', '/home/htpadmin', '/bin/bash'], ['hmessias', 'x', '1002', '1002', '', '/home/hmessias', '/bin/bash']]

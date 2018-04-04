@@ -19,8 +19,8 @@ def get_user_accounts(file_list): #gets the user we want from the /etc/passwf fi
     the user, root and those one created after the OS being installed, ie. UID higher 
     than or iqual 1000.
 
-    >>> get_user_accounts(passwd.py)
-    list
+    >>> get_user_accounts()
+    user_accounts.py
     """
 
     user_accounts = [] #creates an empty user_accounts list to be filled with the info we want
@@ -30,6 +30,7 @@ def get_user_accounts(file_list): #gets the user we want from the /etc/passwf fi
         passwd_fields = passwd_line.split(':') #splits into lines using the : as reference
         if int(passwd_fields[2]) >= 1000 or int(passwd_fields[2]) == 0: #gets the user with user id of 0 and bigger than 1000
             user_accounts.append(passwd_fields) #appends this information to the user_accounts list
+    print(user_accounts)
     return user_accounts
 
 def parse_group(group_path='/etc/group'): #gets the group info from the /etc/group file
@@ -37,8 +38,8 @@ def parse_group(group_path='/etc/group'): #gets the group info from the /etc/gro
     This function gers the information from the file /etc/group and gest a list of the groups
     created in the OS.
 
-    >>> parse_group(group.py)
-    list
+    >>> parse_group()
+    group.py
     """
 
     group_data = []
@@ -91,7 +92,6 @@ def main(): #this makes all these functions bellow run when the python file is i
     group_data = parse_group()
     user_accounts = get_user_accounts(pwd_file_line)
     users_sup_groups = get_sup_groups(user_accounts, group_data)
-    print(users_sup_groups)
     gen_user_report(users_sup_groups)
 
 if __name__ == '__main__': #this makes the python file, program, runs by itself, when called, invoked
