@@ -20,13 +20,20 @@ def get_routers(IP_WWW): #this function issues the traceroute command against so
         ips.extend(findexp)
     return
 
+
+
 def main():
-    sites = ['8.8.8.8', 'osnews.com', 'yahoo.com', 'facebook.com', 'google.com'] #list of the used  destinations to get the router's ip
+    sites = ['8.8.8.8', 'osnews.com', 'yahoo.com', 'facebook.com', 'google.com']
     for site in sites:
         get_routers(site)
 
-    ips_Unique = list(set(ips)) # remove duplicates by creating a set
-    pprint.pprint(ips_Unique) # print list of unique ips
+    
+    unique_ips = []
+    for ip in ips:
+        if ip not in unique_ips:
+            unique_ips.append(ip)
+    
+    pprint.pprint(unique_ips) # print list of unique ips
     return
 
 if __name__ == "__main__":
