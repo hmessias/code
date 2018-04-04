@@ -15,7 +15,6 @@ def get_routers(IP_WWW):
 
     hops = completed.stdout.splitlines()
     hops = hops[1:-1]
-
     for hop in hops:
         findexp = re.findall(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', hop)
         ips.extend(findexp)
