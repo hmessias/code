@@ -59,10 +59,10 @@ def main(): #this makes all these functions bellow run when the python file is i
    
     pwd_file = open("/etc/passwd") #read the file /etc/passwd
     pwd_file_line = pwd_file.readlines() #read the file one line at a time
-    user_accounts = list(filter(get_user, pwd_file_line))
+    user_accounts = list(filter(get_user, pwd_file_line)) #this uses a filter, to get a list
     user_list = []
     for line in user_accounts:
-        user_list.append(line.split(":"))
+        user_list.append(line.split(":")) #this turns the list above indo a list of lines
     group_data = parse_group()
     users_sup_groups = get_sup_groups(user_list, group_data)
     gen_user_report(users_sup_groups)
